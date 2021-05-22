@@ -12,17 +12,18 @@ interface IData {
 
 const App: React.FC = () => {
     const [ data, setData ] = useState<IData[]>([]);
+    const [ isLoad, setIsLoad ] = useState<boolean>(false);
     const [ fruta, setFruta ] = useState<string>("");
     const [ frutaValue, setFrutaValue ] = useState<any>();
 
     useEffect(() => {
-        console.log(data);
+        console.log(isLoad);
         api.get("data").then(
             response => {
                 setData(response.data);
             }
         )
-    }, [data]);
+    }, [isLoad]);
 
     const convertToCurrency = useCallback(
         (value: number) => 
@@ -35,13 +36,16 @@ const App: React.FC = () => {
 
     const addToApi = useCallback(
         () => {
+            setIsLoad(true);
             api.post("data", {
                 id: uuid,
                 name: fruta,
                 price: frutaValue
             }).then(
                 response => alert("Tudo certo")
-            ).catch( e => alert("error"))
+            ).catch( e => alert("error")).finally(
+                () => {setIsLoad(false)}
+            )
         }, [fruta, frutaValue]
     );
     
@@ -55,11 +59,17 @@ const App: React.FC = () => {
                     </li>
                 ))}
                 <hr />
-                <h1>{fruta}</h1>
-                <hr />
-                <input type="text" onChange={ e => setFruta(e.target.value)} placeholder="Qual fruta"/>
-                <input type="text" onChange={ e => setFrutaValue(parseFloat(e.target.value))} placeholder="Qual valor"/>
-                <button onClick={ addToApi }>Adicionar</button>
+                {isLoad ? (
+                    <div>
+                        <p>Aguarde, carregando</p>
+                    </div>
+                ) : (
+                    <div>                        
+                        <input type="text" onChange={ e => setFruta(e.target.value)} placeholder="Qual fruta"/>
+                        <input type="text" onChange={ e => setFrutaValue(parseFloat(e.target.value))} placeholder="Qual valor"/>
+                        <button onClick={ addToApi }>Adicionar</button>
+                    </div>
+                )}
             </ul>
         </div>
     )
