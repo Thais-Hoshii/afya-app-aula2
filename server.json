@@ -1,0 +1,75 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "name": "Morango",
+      "price": 1000
+    },
+    {
+      "id": 1,
+      "name": "Uva",
+      "price": 1000
+    },
+    {
+      "id": 2,
+      "name": "Cereja",
+      "price": 1000
+    },
+    {
+      "id": 3,
+      "name": "Maçã",
+      "price": 1000
+    },
+    {
+      "id": 4,
+      "name": "Melão",
+      "price": 1000
+    },
+    {
+      "id": 5,
+      "name": "Pera",
+      "price": 1000
+    },
+    {
+      "name": "asdawd",
+      "price": "10",
+      "id": 6
+    },
+    {
+      "name": "asdasd",
+      "price": "1",
+      "id": 7
+    },
+    {
+      "name": "Pêssego",
+      "price": 2,
+      "id": 8
+    },
+    {
+      "name": "Pêssego",
+      "price": 20,
+      "id": 9
+    },
+    {
+      "name": "Melância",
+      "price": 15,
+      "id": 10
+    },
+    {
+      "name": "qfqwf",
+      "price": 2000,
+      "id": 11
+    },
+    {
+      "name": "asdawd",
+      "price": 2000,
+      "id": 12
+    }
+  ],
+  "datacontent": [
+    {
+      "id": 3000,
+      "name": "Tester"
+    }
+  ]
+}
