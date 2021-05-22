@@ -5,7 +5,7 @@ import { uuid } from "uuidv4";
 import { api } from "./services/api";
 
 interface IData {
-    id: number;
+    id: string;
     name: string;
     price: number;
 }
@@ -16,21 +16,21 @@ const App: React.FC = () => {
     const [ frutaValue, setFrutaValue ] = useState<any>();
 
     useEffect(() => {
-        console.log(fruta);
+        console.log(data);
         api.get("data").then(
             response => {
                 setData(response.data);
             }
         )
-    }, [fruta])
+    }, [data]);
 
     const convertToCurrency = useCallback(
-        (value: number) => (
+        (value: number) => 
             Intl.NumberFormat(
                 "pt-br",
                 { style: "currency", currency: "BRL" }
-            ).format(value / 100)
-        ), []
+            ).format(value)
+        , [],
     );
 
     const addToApi = useCallback(
